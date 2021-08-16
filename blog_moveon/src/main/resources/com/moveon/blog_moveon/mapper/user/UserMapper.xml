@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.moveon.blog_moveon.mapper.user.UserMapper">
+    <select id="loginUser" resultType="com.moveon.blog_moveon.entity.user.User">
+        select * from m_user where username = #{username} and password = #{password}
+    </select>
+
+    <insert id="registerUser" parameterType="com.moveon.blog_moveon.entity.user.User" keyColumn="uuid">
+        insert into m_user() values(#{uuid},#{username},#{password},null,#{userType},#{registerTime})
+    </insert>
+    
+    <delete id="deleteUser">
+        delete from m_user where username = #{username} and password = #{password}
+    </delete>
+
+    <update id="updatePassword">
+        update m_user set password = #{newPassword} where username = #{username} and password = #{oldPassword}
+    </update>
+</mapper>
